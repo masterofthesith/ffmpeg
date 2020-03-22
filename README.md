@@ -77,3 +77,4 @@ ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid -i <input> \
                 ts/%v.m3u8 >cikti.log 2>&1
 ```
 [Output Nvidia Multi Audio 4K Quality](https://videoseyred.in/embed/55dc214198h4Tx269583UcQq2f46d46616)
+
