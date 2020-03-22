@@ -1,3 +1,4 @@
+![alt text](https://zqwqz.org/assets/img/logo-black.png "Zikuvikuzi")
 # Vader's HLS BEST TRANSCODING SETTING FOR FFMPEG
 ## Native Decode / Native Encode Single Audio (libx264 | AAC)
 ```bash
