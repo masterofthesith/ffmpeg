@@ -76,5 +76,5 @@ ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid -i <input> \
                 -hls_segment_filename ts/%v_%05d.ts \
                 ts/%v.m3u8 >cikti.log 2>&1
 ```
-[Output Nvidia Multi Audio 4K Quality](https://videoseyred.in/embed/55dc214198h4Tx269583UcQq2f46d46616)
+[Output Nvidia Multi Audio 4K Quality](https://videoseyred.in/embed/55dc214198h4Tx269583UcQq2f46d46616) In this output i transcoded it with Tesla P100 
 
