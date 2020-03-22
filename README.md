@@ -1,7 +1,7 @@
 # ffmpeg hls vader's best settings
 ## Native Decode / Native Encode Single Audio (libx264 | AAC)
 ```bash
-ffmpeg -hide_banner -i $1 \
+ffmpeg -hide_banner -i <input> \
                 -map 0:a:0 -map 0:v:0 -map 0:v:0 -map 0:v:0 -map 0:v:0 \
                 -c:v libx264 -c:a aac -ac 2 -ar 44100 \
                 -filter:v:0 "scale=768:-2" -filter:v:1 "scale=960:-2" -filter:v:2 "scale=1280:-2" -filter:v:3 "scale=1920:-2" \
@@ -14,8 +14,8 @@ ffmpeg -hide_banner -i $1 \
                 -bsf:v "filter_units=remove_types=6" -bsf:a aac_adtstoasc -rc-lookahead:v 32 -tune film \
                 -profile:v:0 main -profile:v:1 main -profile:v:2 high -profile:v:3 high \
                 -var_stream_map "a:0,agroup:audio,default:yes,language:ENG,name:1 v:0,agroup:audio,name:432 v:1,agroup:audio,name:540 v:2,agroup:audio,name:720 v:3,agroup:audio,name:1080" \
-                -threads 0 -preset fast -g 48 -keyint_min 48 \
-                -x264opts "keyint=48:min-keyint=48:no-scenecut:nal-hrd=vbr" -pix_fmt yuv420p \
+                -threads 0 -preset fast -g <fps*2> -keyint_min <fps*2> \
+                -x264opts "keyint=<fps*2>:min-keyint=<fps*2>:no-scenecut:nal-hrd=vbr" -pix_fmt yuv420p \
                 -f hls -hls_playlist_type vod -hls_allow_cache 1 -hls_time 6 \
                 -map_metadata -1 -map_chapters -1 -hls_list_size 0 \
                 -master_pl_name manifest.m3u8 \
@@ -25,7 +25,7 @@ ffmpeg -hide_banner -i $1 \
 
 ## Native Decode / Native Encode Multi Audio (libx264 | AAC)
 ```bash
-ffmpeg -hide_banner -i $1 \
+ffmpeg -hide_banner -i <input> \
                 -map 0:a:m:language:eng -map 0:a:m:language:tur -map 0:v:0 -map 0:v:0 -map 0:v:0 -map 0:v:0 \
                 -c:v libx264 -c:a aac -ac 2 -ar 44100 \
                 -filter:v:0 "scale=768:-2" -filter:v:1 "scale=960:-2" -filter:v:2 "scale=1280:-2" -filter:v:3 "scale=1920:-2" \
@@ -39,8 +39,8 @@ ffmpeg -hide_banner -i $1 \
                 -bsf:v "filter_units=remove_types=6" -bsf:a aac_adtstoasc -rc-lookahead:v 32 -tune film \
                 -profile:v:0 main -profile:v:1 main -profile:v:2 high -profile:v:3 high \
                 -var_stream_map "a:0,agroup:audio,default:yes,language:ENG,name:1 a:1,agroup:audio,default:no,language:TUR,name:0 v:0,agroup:audio,name:432 v:1,agroup:audio,name:540 v:2,agroup:audio,name:720 v:3,agroup:audio,name:1080" \
-                -threads 0 -preset fast -g 48 -keyint_min 48 \
-                -x264opts "keyint=48:min-keyint=48:no-scenecut:nal-hrd=vbr" -pix_fmt yuv420p \
+                -threads 0 -preset fast -g <fps*2> -keyint_min <fps*2> \
+                -x264opts "keyint=<fps*2>:min-keyint=<fps*2>:no-scenecut:nal-hrd=vbr" -pix_fmt yuv420p \
                 -f hls -hls_playlist_type vod -hls_allow_cache 1 -hls_time 6 \
                 -map_metadata -1 -map_chapters -1 -hls_list_size 0 \
                 -master_pl_name manifest.m3u8 \
@@ -49,7 +49,7 @@ ffmpeg -hide_banner -i $1 \
 ```
 ## Nvidia Cuvid Decode / Nvidia Nvenc Encode / Libfdk_aac Multi Audio (H264_CUVID | H264_NVENC | LIBFDK_AAC)
 ```bash
-ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid -i $1 \
+ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid -i <input> \
                 -map 0:a:m:language:eng -map 0:a:m:language:tur -map 0:v:0 -map 0:v:0 -map 0:v:0 -map 0:v:0 \
                 -codec:v h264_nvenc -c:a libfdk_aac -ac 2 -ar 44100 \
                 -filter:v:0 "scale_npp=768:-2:interp_algo=super" -filter:v:1 "scale=960:-2:interp_algo=super" -filter:v:2 "scale=1280:-2:interp_algo=super" -filter:v:3 "scale=1920:-2:interp_algo=super" \
@@ -63,7 +63,7 @@ ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid -i $1 \
                 -bsf:v "filter_units=remove_types=6" -bsf:a aac_adtstoasc -rc-lookahead:v 32 \
                 -profile:v:0 main -profile:v:1 main -profile:v:2 high -profile:v:3 high \
                 -var_stream_map "a:0,agroup:audio,default:yes,language:ENG,name:1 a:1,agroup:audio,default:no,language:TUR,name:0 v:0,agroup:audio,name:432 v:1,agroup:audio,name:540 v:2,agroup:audio,name:720 v:3,agroup:audio,name:1080" \
-                -preset llhq -g 48 -keyint_min 48 \
+                -preset llhq -g <fps*2> -keyint_min <fps*2> \
                 -pix_fmt cuda \
                 -f hls -hls_playlist_type vod -hls_allow_cache 1 -hls_time 6 \
                 -map_metadata -1 -map_chapters -1 -hls_list_size 0 \
