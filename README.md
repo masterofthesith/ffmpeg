@@ -1,1 +1,1 @@
-# ffmpeg
+# ffmpeg hls best settings
