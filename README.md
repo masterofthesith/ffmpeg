@@ -48,6 +48,7 @@ ffmpeg -hide_banner -i $1 \
                 ts/%v.m3u8 >cikti.log 2>&1
 ```
 ## Nvidia Cuvid Decode / Nvidia Nvenc Encode / Libfdk_aac Multi Audio (H264_CUVID | H264_NVENC | LIBFDK_AAC)
+```bash
 ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid -i $1 \
                 -map 0:a:m:language:eng -map 0:a:m:language:tur -map 0:v:0 -map 0:v:0 -map 0:v:0 -map 0:v:0 \
                 -codec:v h264_nvenc -c:a libfdk_aac -ac 2 -ar 44100 \
