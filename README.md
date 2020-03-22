@@ -23,6 +23,7 @@ ffmpeg -hide_banner -i <input> \
                 -hls_segment_filename ts/%v_%05d.ts \
                 ts/%v.m3u8 >cikti.log 2>&1
 ```
+[Output Native Single Audio](https://videoseyred.in/embed/93fc4d24f6h4Tx282008UcQqfa9dc063c1)
 
 ## Native Decode / Native Encode Multi Audio (libx264 | AAC)
 ```bash
@@ -48,6 +49,9 @@ ffmpeg -hide_banner -i <input> \
                 -hls_segment_filename ts/%v_%05d.ts \
                 ts/%v.m3u8 >cikti.log 2>&1
 ```
+[Output Native Multi Audio](https://videoseyred.in/embed/9e782811aah4Tx266215UcQq9f86e8bc74)
+
+
 ## Nvidia Cuvid Decode / Nvidia Nvenc Encode / Libfdk_aac Multi Audio (H264_CUVID | H264_NVENC | LIBFDK_AAC)
 ```bash
 ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid -i <input> \
@@ -72,3 +76,4 @@ ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid -i <input> \
                 -hls_segment_filename ts/%v_%05d.ts \
                 ts/%v.m3u8 >cikti.log 2>&1
 ```
+[Output Nvidia Multi Audio 4K Quality](https://videoseyred.in/embed/55dc214198h4Tx269583UcQq2f46d46616)
