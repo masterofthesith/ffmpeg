@@ -1,4 +1,4 @@
-# ffmpeg hls vader's best settings
+# Vader's HLS BEST TRANSCODING SETTING FOR FFMPEG
 ## Native Decode / Native Encode Single Audio (libx264 | AAC)
 ```bash
 ffmpeg -hide_banner -i <input> \
