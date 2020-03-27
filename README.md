@@ -79,8 +79,8 @@ ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid -i <input> \
 [Output Nvidia Multi Audio 4K Quality](https://videoseyred.in/embed/55dc214198h4Tx269583UcQq2f46d46616) In this output i transcoded it with Tesla P100 
 
 ## Multi Video Files Instant HLS Conversion
-### Sound must have AAC Codec with 44100HZ Stero Channel max 320KBs Codec
-### Videos must have H264 8Bit (Max 4K resolution) Codec with global header
+##### Sound must have AAC Codec with 44100HZ Stero Channel max 320KBs Codec
+##### Videos must have H264 8Bit (Max 4K resolution) Codec with global header
 
 ```bash
 ffmpeg -hide_banner -i sound.aac -i 432.mp4 -i 540.mp4 -i 720.mp4 -i 1080.mp4 \
