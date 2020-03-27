@@ -21,7 +21,7 @@ ffmpeg -hide_banner -i <input> \
                 -map_metadata -1 -map_chapters -1 -hls_list_size 0 \
                 -master_pl_name manifest.m3u8 \
                 -hls_segment_filename ts/%v_%05d.ts \
-                ts/%v.m3u8 >cikti.log 2>&1
+                ts/%v.m3u8
 ```
 [Output Native Single Audio](https://videoseyred.in/embed/93fc4d24f6h4Tx282008UcQqfa9dc063c1)
 
@@ -47,7 +47,7 @@ ffmpeg -hide_banner -i <input> \
                 -map_metadata -1 -map_chapters -1 -hls_list_size 0 \
                 -master_pl_name manifest.m3u8 \
                 -hls_segment_filename ts/%v_%05d.ts \
-                ts/%v.m3u8 >cikti.log 2>&1
+                ts/%v.m3u8
 ```
 [Output Native Multi Audio](https://videoseyred.in/embed/9e782811aah4Tx266215UcQq9f86e8bc74)
 
@@ -74,7 +74,23 @@ ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid -i <input> \
                 -map_metadata -1 -map_chapters -1 -hls_list_size 0 \
                 -master_pl_name manifest.m3u8 \
                 -hls_segment_filename ts/%v_%05d.ts \
-                ts/%v.m3u8 >cikti.log 2>&1
+                ts/%v.m3u8
 ```
 [Output Nvidia Multi Audio 4K Quality](https://videoseyred.in/embed/55dc214198h4Tx269583UcQq2f46d46616) In this output i transcoded it with Tesla P100 
 
+## Multi Video Files Instant HLS Conversion
+### Sound must have AAC Codec with 44100HZ Stero Channel max 320KBs Codec
+### Videos must have H264 8Bit (Max 4K resolution) Codec with global header
+
+```bash
+ffmpeg -hide_banner -i sound.aac -i 432.mp4 -i 540.mp4 -i 720.mp4 -i 1080.mp4 \
+                -map 0:a -map 1:v -map 2:v -map 3:v -map 4:v \
+                -codec:v cıoy -c:a copy \                                
+                -bsf:v "filter_units=remove_types=6" -bsf:a aac_adtstoasc \
+                -var_stream_map "a:0,agroup:audio,default:yes,language:ENG,name:1 v:0,agroup:audio,name:432 v:1,agroup:audio,name:540 v:2,agroup:audio,name:720 v:3,agroup:audio,name:1080" \
+                -f hls -hls_playlist_type vod -hls_allow_cache 1 -hls_time 6 \
+                -map_metadata -1 -map_chapters -1 -hls_list_size 0 \
+                -master_pl_name manifest.m3u8 \
+                -hls_segment_filename ts/%v_%05d.ts \
+                ts/%v.m3u8
+```
