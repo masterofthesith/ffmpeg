@@ -85,7 +85,7 @@ ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid -i <input> \
 ```bash
 ffmpeg -hide_banner -i sound.aac -i 432.mp4 -i 540.mp4 -i 720.mp4 -i 1080.mp4 \
                 -map 0:a -map 1:v -map 2:v -map 3:v -map 4:v \
-                -codec:v cıoy -c:a copy \                                
+                -codec:v copy -c:a copy \                                
                 -bsf:v "filter_units=remove_types=6" -bsf:a aac_adtstoasc \
                 -var_stream_map "a:0,agroup:audio,default:yes,language:ENG,name:1 v:0,agroup:audio,name:432 v:1,agroup:audio,name:540 v:2,agroup:audio,name:720 v:3,agroup:audio,name:1080" \
                 -f hls -hls_playlist_type vod -hls_allow_cache 1 -hls_time 6 \
