@@ -24,6 +24,7 @@ ffmpeg -hide_banner -i <input> \
                 ts/%v.m3u8
 ```
 Edit settings like -g, -keyint_min, keyint, min-keyint your video's frame rate value * 2
+
 [Output Native Single Audio](https://videoseyred.in/embed/93fc4d24f6h4Tx282008UcQqfa9dc063c1)
 
 ## Native Decode / Native Encode Multi Audio (libx264 | AAC)
@@ -51,6 +52,7 @@ ffmpeg -hide_banner -i <input> \
                 ts/%v.m3u8
 ```
 Edit settings like -g, -keyint_min, keyint, min-keyint your video's frame rate value * 2
+
 [Output Native Multi Audio](https://videoseyred.in/embed/9e782811aah4Tx266215UcQq9f86e8bc74)
 
 
