@@ -53,7 +53,7 @@ ffmpeg -hide_banner -i <input> \
 ```
 Edit settings like -g, -keyint_min, keyint, min-keyint your video's frame rate value * 2
 
-[Output Native Multi Audio](https://videoseyred.in/embed/9e782811aah4Tx266215UcQq9f86e8bc74)
+Example Out: [Native Multi Audio](https://videoseyred.in/embed/9e782811aah4Tx266215UcQq9f86e8bc74)
 
 
 ## Nvidia Cuvid Decode / Nvidia Nvenc Encode / Libfdk_aac Multi Audio (H264_CUVID | H264_NVENC | LIBFDK_AAC)
@@ -108,7 +108,8 @@ ffmpeg -hide_banner \
        -hls_segment_filename ts/%v_%05d.ts \
        ts/%v.m3u8
 ```
-[Output Nvidia Multi Audio 4K Quality](https://videoseyred.in/embed/55dc214198h4Tx269583UcQq2f46d46616) In this output i transcoded it with Tesla P100 
+Example Out: [Nvidia Multi Audio 4K Quality](https://videoseyred.in/embed/55dc214198h4Tx269583UcQq2f46d46616) 
+For this example out we use gpu Tesla P100
 
 ## Multi Video Files Instant HLS Conversion
 ##### Sound must have AAC Codec with 44100HZ Stero Channel max 320KBs Codec
