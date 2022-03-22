@@ -1,4 +1,4 @@
-![alt text](https://zqwqz.org/assets/img/logo-black.png "Zikuvikuzi")
+# UPDATED 22.03.2022
 # Vader's HLS BEST TRANSCODING SETTING FOR FFMPEG
 ## Native Decode / Native Encode Single Audio (libx264 | AAC)
 ```bash
@@ -23,6 +23,7 @@ ffmpeg -hide_banner -i <input> \
                 -hls_segment_filename ts/%v_%05d.ts \
                 ts/%v.m3u8
 ```
+Edit settings like -g, -keyint_min, keyint, min-keyint your video's frame rate value * 2
 [Output Native Single Audio](https://videoseyred.in/embed/93fc4d24f6h4Tx282008UcQqfa9dc063c1)
 
 ## Native Decode / Native Encode Multi Audio (libx264 | AAC)
@@ -49,6 +50,7 @@ ffmpeg -hide_banner -i <input> \
                 -hls_segment_filename ts/%v_%05d.ts \
                 ts/%v.m3u8
 ```
+Edit settings like -g, -keyint_min, keyint, min-keyint your video's frame rate value * 2
 [Output Native Multi Audio](https://videoseyred.in/embed/9e782811aah4Tx266215UcQq9f86e8bc74)
 
 
@@ -56,6 +58,7 @@ ffmpeg -hide_banner -i <input> \
 ```bash
 ffmpeg -hide_banner \
        -hwaccel cuvid \
+       -hwaccel_output_format cuda \
        -c:v h264_cuvid \
        -i <input> \
        -map 0:a:m:language:eng -map 0:a:m:language:tur -map 0:v:0 -map 0:v:0 -map 0:v:0 -map 0:v:0 \
@@ -86,7 +89,8 @@ ffmpeg -hide_banner \
        -profile:v:2 high \
        -profile:v:3 high \
        -var_stream_map "a:0,agroup:audio,default:yes,language:ENG,name:1 a:1,agroup:audio,default:no,language:TUR,name:0 v:0,agroup:audio,name:432 v:1,agroup:audio,name:540 v:2,agroup:audio,name:720 v:3,agroup:audio,name:1080" \
-       -preset llhq \
+       -preset fast \
+       -tune ll \
        -g <fps*2> \
        -keyint_min <fps*2> \
        -pix_fmt cuda \
